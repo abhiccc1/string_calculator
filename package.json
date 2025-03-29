@@ -1,6 +1,6 @@
 {
   "name": "string_calculator",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A simple calculator that takes string input to perform calculation",
   "main": "index.js",
   "directories": {
