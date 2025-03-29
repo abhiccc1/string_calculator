@@ -1,7 +1,7 @@
 {
   "name": "string_calculator",
   "version": "0.1.0",
-  "description": "TODO: Add Installation & Usage Instructions",
+  "description": "A simple calculator that takes string input to perform calculation",
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -15,8 +15,8 @@
     "url": "git+https://github.com/abhiccc1/string_calculator.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Abhinav Chauhan",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/abhiccc1/string_calculator/issues"
   },

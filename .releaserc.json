@@ -10,7 +10,7 @@
         [
             "@semantic-release/exec",
             {
-                "prepareCmd": "export NEXT_VERSION=${nextRelease.version} && ruby -i -pe \"BEGIN{\\$new_ver=ENV[\\\"NEXT_VERSION\\\"]}; \\$_.sub!(/VERSION\\s*=\\s*[\\\"']\\d+\\.\\d+\\.\\d+[\\\"']/, %{VERSION = \\\"#{\\$new_ver}\\\"})\" lib/string_calculator/version.rb"
+                "prepareCmd": "sed -i 's/\"version\": \".*\"/\"version\": \"${nextRelease.version}\"/' package.json"
             }
         ],
         [
@@ -18,16 +18,12 @@
             {
                 "assets": [
                     "CHANGELOG.md",
-                    "lib/string_calculator/version.rb",
-                    "string_calculator.gemspec"
+                    "package.json",
+                    "package-lock.json"
                 ],
                 "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
         ],
-        [
-            "@semantic-release/github",
-            {
-            }
-        ]
+        "@semantic-release/github"
     ]
 }
