@@ -1,0 +1,28 @@
+# .github/release.yml
+
+changelog:
+  exclude:
+    labels:
+      - 'skip-changelog' # Exclude PRs with this label
+    authors:
+      - 'github-actions[bot]' # Exclude commits from this bot
+  categories:
+    - title: '🚀 New Features & Enhancements'
+      labels:
+        - 'feature'
+        - 'enhancement'
+    - title: '🐛 Bug Fixes'
+      labels:
+        - 'bug'
+        - 'fix'
+        - 'bugfix'
+    - title: '🧰 Maintenance & Chores'
+      labels:
+        - 'chore'
+        - 'maintenance'
+        - 'ci'
+        - 'documentation'
+    # Add a catch-all category for uncategorized PRs (optional)
+    - title: 'Other Changes'
+      labels:
+        - '*' # Matches any label not matched above

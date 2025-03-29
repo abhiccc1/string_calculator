@@ -5,27 +5,16 @@
 module StringCalculatorHelpers
   # Helper methods for the Calculator class
 
-  def validate_input(input)
-    # To do
-  end
-
-  def check_for_negatives(numbers)
-    # To do
-  end
-
   def parse_components(input)
     # To do
   end
 
-  def parse_numbers(input)
+  def extract_and_convert(components)
+    raise NegativeNumberError, components[1] if components[1].any?(&:negative?)
     # To do
   end
 
-  def parse_delimiters(input)
-    # To do
-  end
-
-  def add_numbers(numbers)
+  def sum_numbers(input)
     # To do
   end
 end

@@ -1,0 +1,40 @@
+# .github/workflows/generate-release-notes.yml
+
+name: Generate GitHub Release Notes
+
+on:
+  push:
+    tags:
+      - 'v*.*.*' # Trigger only on version tags pushed by semantic-release
+
+permissions:
+  contents: write # Required to create/update GitHub releases
+
+jobs:
+  create_release:
+    name: Create Detailed Release Notes
+    runs-on: ubuntu-latest
+    steps:
+      # No checkout needed generally, as the action works based on the tag ref
+      # and GitHub API data (PRs associated with commits between tags).
+
+      - name: Generate GitHub Release Body
+        uses: ncipollo/release-action@v1
+        with:
+          # Use the tag name from the event that triggered this workflow
+          tag: ${{ github.ref_name }}
+
+          # IMPORTANT: Use GitHub's generator for the release notes body
+          generateReleaseNotes: true
+
+          # allowUpdates: true # Use this if semantic-release already created
+                            # a basic release, and you want this job to
+                            # *update* its body. Set to false if you want
+                            # this job to fail if a release for the tag
+                            # already exists (less common with semantic-release).
+                            # Default might be true, check action docs if needed.
+
+          # Set draft: false and prerelease: false to ensure it's published
+          draft: false
+          prerelease: false
+          # token: ${{ secrets.GITHUB_TOKEN }} # Uses GITHUB_TOKEN by default
