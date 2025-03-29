@@ -18,30 +18,4 @@ class Calculator
   def add(input_string)
     begin_input(input_string)
   end
-
-  private
-
-  def validate_input(input)
-    # To do
-  end
-
-  def check_for_negatives(numbers)
-    # To do
-  end
-
-  def parse_components(input)
-    # To do
-  end
-
-  def parse_numbers(input)
-    # To do
-  end
-
-  def parse_delimiters(input)
-    # To do
-  end
-
-  def add_numbers(numbers)
-    # To do
-  end
 end
