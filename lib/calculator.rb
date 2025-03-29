@@ -15,7 +15,22 @@ class Calculator
     end
   end
 
-  def add(input_string)
-    begin_input(input_string)
+  # Custom error class for handling invalid input types
+  # @raise [InvalidInputError] when input is not a valid string
+  class InvalidInputError < StandardError
+    def initialize(no_string)
+      super("Invalid input: #{no_string} is not a valid string")
+    end
+  end
+
+  def add(input_string = "//;\n1;2")
+    raise InvalidInputError, input_string if input.nil?
+    raise InvalidInputError, input_string unless input.is_a?(String)
+    return 0 if input_string.empty?
+
+    # Execute the pipeline steps using the helper module's static methods
+    components    = parse_components(input_string)
+    numbers       = extract_and_convert(components)
+    sum_numbers(numbers)
   end
 end
