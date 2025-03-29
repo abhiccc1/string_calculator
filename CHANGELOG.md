@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/abhiccc1/string_calculator/compare/v1.1.0...v1.2.0) (2025-03-29)
+
+
+### Features
+
+* First Good Release ([0529ccd](https://github.com/abhiccc1/string_calculator/commit/0529ccd544c6c83fa0a0e592a0dd10532b2d7e41))
+
 # [1.1.0](https://github.com/abhiccc1/string_calculator/compare/v1.0.1...v1.1.0) (2025-03-29)
 
 
