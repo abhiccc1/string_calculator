@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative "string_calculator/version"
+require_relative "string_calculator/helpers"
 
 # Calculator class that processes string inputs containing numbers and delimiters
 # to calculate their sum. Supports custom delimiters and handles various input formats.
 class Calculator
-  include StringCalculator
+  include StringCalculatorHelpers
 
   # Custom error class for handling negative numbers in the input
   # @raise [NegativeNumberError] when negative numbers are found in the input
