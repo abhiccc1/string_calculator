@@ -5,16 +5,9 @@
 module StringCalculatorHelpers
   # Helper methods for the Calculator class
 
-  def parse_components(input)
-    # To do
-  end
-
-  def extract_and_convert(components)
-    raise NegativeNumberError, components[1] if components[1].any?(&:negative?)
-    # To do
-  end
-
-  def sum_numbers(input)
-    # To do
+  def parse_numbers(input)
+    num_array = input.split(",").map!(&:to_i)
+    Calculator.raise_if_negative(num_array)
+    num_array
   end
 end
