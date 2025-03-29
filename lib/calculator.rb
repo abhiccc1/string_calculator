@@ -7,30 +7,40 @@ require_relative "string_calculator/helpers"
 class Calculator
   include StringCalculatorHelpers
 
-  # Custom error class for handling negative numbers in the input
-  # @raise [NegativeNumberError] when negative numbers are found in the input
+  # Custom error classes
   class NegativeNumberError < StandardError
-    def initialize(negatives)
-      super("Negative numbers not allowed: #{negatives.join(", ")}")
+    def initialize(numbers)
+      super("Negative numbers not allowed: #{numbers.join(", ")}")
     end
   end
 
-  # Custom error class for handling invalid input types
-  # @raise [InvalidInputError] when input is not a valid string
+  # Error raised when the input provided to the calculator is not a valid string
   class InvalidInputError < StandardError
-    def initialize(no_string)
-      super("Invalid input: #{no_string} is not a valid string")
+    def initialize(input)
+      super("Invalid input: #{input.inspect} is not a valid string")
     end
   end
 
-  def add(input_string = "//;\n1;2")
-    raise InvalidInputError, input_string if input.nil?
-    raise InvalidInputError, input_string unless input.is_a?(String)
-    return 0 if input_string.empty?
+  def sum_numbers(input)
+    self.class.raise_invalid_input(input)
+    return 0 if input.empty?
 
-    # Execute the pipeline steps using the helper module's static methods
-    components    = parse_components(input_string)
-    numbers       = extract_and_convert(components)
-    sum_numbers(numbers)
+    parse_numbers(input).sum
+  end
+
+  class << self
+    # Raises an error when negative numbers are found in the input
+    # @param input [Array<Integer>] Array of numbers to check
+    # @raise [NegativeNumberError] when negative numbers are found
+    def raise_if_negative(input)
+      raise NegativeNumberError, input.select(&:negative?) if input.any?(&:negative?)
+    end
+
+    # Validates that the input is a string
+    # @param input [Object] The input to validate
+    # @raise [InvalidInputError] when input is not a string
+    def raise_invalid_input(input)
+      raise InvalidInputError, input unless input.is_a?(String)
+    end
   end
 end
