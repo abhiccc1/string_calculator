@@ -5,7 +5,9 @@ name: Generate GitHub Release Notes
 on:
   push:
     tags:
-      - 'v*.*.*' # Trigger only on version tags pushed by semantic-release
+      - 'v*.*.*'
+  # Add for testing, remove after confirmed working
+  workflow_dispatch:
 
 permissions:
   contents: write # Required to create/update GitHub releases
